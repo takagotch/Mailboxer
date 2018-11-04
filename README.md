@@ -60,7 +60,35 @@ class User < ActiveRecord::Base
   acts_as_messageable
 end
 
+class Duck < ActiveRecord::Base
+  acts_as_messageable
+end
 
+class Cylon < AcitveRecord::Base
+  acts_as_messageable
+end
+
+alfa.send_message(beta, "Body", "subject")
+
+conversation = alfa.mailbox.inbox.first
+receipts = conversation.receipts_for alfa
+receipts.each do |receipt|
+  message = receipt.message
+  read = receipt.is_unread? # message.is_unread?(alfa)
+end
+
+alfa.reply_to_all(receipt, "Reply body")
+alfa.reply_to_conversation(conversaton, "Reply body")
+
+alfa.reply_to_sender(receipt, "Reply body")
+
+receipt.mark_as_deleted
+
+conversation.mark_as_deleted participnt
+
+alfa.mark_as_deleted conversation
+
+conversation.messages_for(alfa)
 
 
 
