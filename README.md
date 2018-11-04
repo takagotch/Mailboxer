@@ -90,10 +90,15 @@ alfa.mark_as_deleted conversation
 
 conversation.messages_for(alfa)
 
+alfa.mailbox.conversations
+alfa.mailbox.info
+alfa.mailbox.sentbox
+alfa.mailbox.trash
 
-
-
-
+conversations = alfa.mailbox.conversations.page(params[:page]).per(9)
+conversations = alfa.mailbox.info.page(params[:page]).per(9)
+conversations = alfa.mailbox.sendbox.page(params[:page]).per(9)
+conversations = alfa.mailbox.trash.page(params[:page]).per(9)
 ```
 
 ```
