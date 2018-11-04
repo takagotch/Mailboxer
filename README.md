@@ -36,6 +36,32 @@ class NewCommentNotification < Mailboxer::Notification
   end
 end
 
+def name
+  return "You should add method :name in your Messageable model"
+end
+
+def mailboxer_email(object)
+  # if true
+  return "define_email@on_your.model"
+  # return nil
+end
+
+Mailboxer.setup do |config|
+  config.email_method = :mailboxer_email
+  config.name_method = :name
+  config.notify_method = :notify
+end
+
+config.email_method = :notification_email
+config.name_method = :display_name
+config.notify_method = :notify_mailboxer
+
+class User < ActiveRecord::Base
+  acts_as_messageable
+end
+
+
+
 
 
 
